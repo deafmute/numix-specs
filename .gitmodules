@@ -1,0 +1,9 @@
+[submodule "numix-icon-theme"]
+	path = numix-icon-theme
+	url = https://github.com/numixproject/numix-icon-theme.git
+[submodule "numix-icon-theme-circle"]
+	path = numix-icon-theme-circle
+	url = https://github.com/numixproject/numix-icon-theme-circle
+[submodule "Numix"]
+	path = Numix
+	url = https://github.com/shimmerproject/Numix.git
