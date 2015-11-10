@@ -44,7 +44,11 @@ uTouch is an icon theme for Linux from the Numix project
 %package gtk-theme
 Group: Application/Internet
 Summary: Numix Gtk Theme
+%if %{defined %fedora}
+BuildRequires: rubygem-saas glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
+%else
 BuildRequires: rubygems glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
+%endif
 %description gtk-theme
 Numix is a modern flat theme with a combination of light and dark elements. It supports Gnome, Unity, XFCE and Openbox.
 
@@ -52,7 +56,9 @@ Numix is a modern flat theme with a combination of light and dark elements. It s
 %gitclone https://github.com/sspreitzer/numix-specs.git
 
 %build
-gem install sass
+%if %{undefined %fedora}
+gem install --user-install sass
+%endif
 cd %{_sourcedir}/%{name}-%{version}-%{release}/numix-gtk-theme
 make
 
