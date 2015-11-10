@@ -29,6 +29,18 @@ Summary: Numix Circle Icons
 %description icon-theme-circle
 Circle is an icon theme for Linux from the Numix project
 
+%package icon-theme-shine
+Group: Application/Internet
+Summary: Numix Shine Icons
+%description icon-theme-shine
+Shine is an icon theme for Linux from the Numix project
+
+%package icon-theme-utouch
+Group: Application/Internet
+Summary: Numix uTouch Icons
+%description icon-theme-utouch
+uTouch is an icon theme for Linux from the Numix project
+
 %package gtk-theme
 Group: Application/Internet
 Summary: Numix Gtk Theme
@@ -39,6 +51,8 @@ Numix is a modern flat theme with a combination of light and dark elements. It s
 %prep
 %gitclone https://github.com/numixproject/numix-icon-theme.git numix-icon-theme
 %gitclone https://github.com/numixproject/numix-icon-theme-circle.git numix-icon-theme-circle
+%gitclone https://github.com/numixproject/numix-icon-theme-shine.git numix-icon-theme-shine
+%gitclone https://github.com/numixproject/numix-icon-theme-utouch.git numix-icon-theme-utouch
 %gitclone https://github.com/shimmerproject/Numix.git numix-gtk-theme
 
 %build
@@ -51,6 +65,8 @@ make
 %{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme/Numix-Light %{buildroot}%{_datadir}/icons/Numix-Light
 %{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-circle/Numix-Circle %{buildroot}%{_datadir}/icons/Numix-Circle
 %{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-circle/Numix-Circle-Light %{buildroot}%{_datadir}/icons/Numix-Circle-Light
+%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-shine/Numix-Shine %{buildroot}%{_datadir}/icons/Numix-Shine
+%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-utouch/Numix-uTouch %{buildroot}%{_datadir}/icons/Numix-uTouch
 cd %{_sourcedir}/%{name}-%{version}-%{release}/numix-gtk-theme
 make install DESTDIR=%{buildroot}
 
@@ -64,6 +80,14 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/icons/Numix-Circle
 %{_datadir}/icons/Numix-Circle-Light
 
+%files icon-theme-shine
+%doc
+%{_datadir}/icons/Numix-Shine
+
+%files icon-theme-utouch
+%doc
+%{_datadir}/icons/Numix-uTouch
+
 %files gtk-theme
 %doc
 %{_datadir}/themes/Numix
@@ -71,3 +95,4 @@ make install DESTDIR=%{buildroot}
 %changelog
 * Tue Nov 10 2015 Sascha Spreitzer <sspreitz@redhat.com>
 - Repackaging
+- Adding Shine and uTouch
