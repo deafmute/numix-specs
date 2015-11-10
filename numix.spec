@@ -1,5 +1,5 @@
-%define timestamp() %(date -u +%%s)
-%define gitclone() (git clone %1 %{_sourcedir}/%{name}-%{version}-%{release}/%2)
+%define timestamp %(date -u +%%s)
+%define gitclone() (git clone --recursive %1 %{_sourcedir}/%{name}-%{version}-%{release})
 
 Name:		numix
 Version:	999
@@ -44,18 +44,15 @@ uTouch is an icon theme for Linux from the Numix project
 %package gtk-theme
 Group: Application/Internet
 Summary: Numix Gtk Theme
-BuildRequires: rubygem-sass glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
+BuildRequires: rubygems glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
 %description gtk-theme
 Numix is a modern flat theme with a combination of light and dark elements. It supports Gnome, Unity, XFCE and Openbox.
 
 %prep
-%gitclone https://github.com/numixproject/numix-icon-theme.git numix-icon-theme
-%gitclone https://github.com/numixproject/numix-icon-theme-circle.git numix-icon-theme-circle
-%gitclone https://github.com/numixproject/numix-icon-theme-shine.git numix-icon-theme-shine
-%gitclone https://github.com/numixproject/numix-icon-theme-utouch.git numix-icon-theme-utouch
-%gitclone https://github.com/shimmerproject/Numix.git numix-gtk-theme
+%gitclone https://github.com/sspreitzer/numix-specs.git
 
 %build
+gem install sass
 cd %{_sourcedir}/%{name}-%{version}-%{release}/numix-gtk-theme
 make
 
