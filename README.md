@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sspreitzer/numix-specs.svg?branch=master)](https://travis-ci.org/sspreitzer/numix-specs)
+
 # Numix Icons & Gtk Theme
 
 ## Intro
