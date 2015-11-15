@@ -57,7 +57,7 @@ Numix is a modern flat theme with a combination of light and dark elements. It s
 
 %build
 %if %{undefined %fedora}
-gem install --user-install sass
+  gem install --user-install sass
 %endif
 cd %{_sourcedir}/%{name}-%{version}-%{release}/numix-gtk-theme
 make
