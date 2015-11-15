@@ -22,8 +22,8 @@ Keep on hacking.
 ## Enabling it
 
 ### On Fedora
-	$ sudo dnf copr enable -y sspreitz/numix-git
-	$ sudo dnf install -y numix-icon-* numix-gtk-*
+	$ sudo dnf copr enable -y numix/numix
+	$ sudo dnf install -y numix-\*
 
 ## License
 GPLv3
