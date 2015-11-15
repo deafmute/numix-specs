@@ -8,7 +8,7 @@ Numix Icons & Gtk Theme for Fedora, CentOS and Red Hat Enterprise Linux.
 
 ## Links
 * [Numix Project](http://numixproject.org)
-* [Numix Fedora Copr](https://copr.fedoraproject.org/coprs/sspreitz/numix-git)
+* [Numix Fedora Copr](https://copr.fedoraproject.org/coprs/numix/numix)
 
 ## Remarks
 The upstream source repositories do not have any versioning tags enabled.
