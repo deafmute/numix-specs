@@ -19,7 +19,10 @@ install -D /mnt/secrets/copr ${HOME}/.config/copr
 
 git config user.name "numixproject"
 git config user.email "ci@numixproject.org"
+git remote remove origin
+git remote add origin git@github.com:sspreitzer/numix-specs.git
 git reset --hard ${TRAVIS_TAG}
+git fetch
 git checkout gh-pages
 make
 git add index.html ${srpm}
