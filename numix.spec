@@ -1,4 +1,4 @@
-%define timestamp %(date -u +%%s)
+%define timestamp TIMESTAMP
 %define gitclone() (git clone --recursive %1 %{_sourcedir}/%{name}-%{version}-%{release})
 
 Name:		numix

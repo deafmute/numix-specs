@@ -3,5 +3,10 @@
 set -x
 set -e
 
+if [ -z "${TRAVIS_TAG}" ]; then
+  export TRAVIS_TAG=$(date -u +%s)
+fi
+
 dnf install -y rpm-build
+sed -i "s|TIMESTAMP|${TRAVIS_TAG}|g" /mnt/numix.spec
 rpmbuild -D"%_srcrpmdir /mnt" -bs /mnt/numix.spec
