@@ -3,6 +3,9 @@
 set -x
 set -e
 
+dnf install -y make git copr-cli
+cd /mnt
+
 srpm=$(ls numix-999-${TRAVIS_TAG}*.src.rpm)
 
 install -m 0700 -d ${HOME}/.ssh
@@ -14,8 +17,6 @@ EOF
 
 install -D /mnt/secrets/copr ${HOME}/.config/copr
 
-dnf install -y make git copr-cli
-cd /mnt
 git config user.name "numixproject"
 git config user.email "ci@numixproject.org"
 git reset --hard ${TRAVIS_TAG}
