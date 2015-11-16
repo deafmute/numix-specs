@@ -35,4 +35,4 @@ for tag in $(git tag | grep -v ${TRAVIS_TAG}); do
 done
 git push origin gh-pages
 sleep 20
-copr build numix/numix http://sspreitzer.github.io/numix-specs/${srpm}
+copr build --nowait numix/numix http://sspreitzer.github.io/numix-specs/${srpm}
