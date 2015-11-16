@@ -13,6 +13,9 @@ cat > ${HOME}/.ssh/config <<EOF
 Host github.com
   User git
   IdentityFile /mnt/secrets/id_rsa.github
+  CheckHostIP no
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
 EOF
 
 install -D /mnt/secrets/copr ${HOME}/.config/copr
