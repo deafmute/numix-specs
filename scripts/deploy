@@ -3,6 +3,29 @@
 set -x
 set -e
 
-dnf install -y git copr-cli
+srpm=$(ls numix-999-${TRAVIS_TAG}*.src.rpm)
+
+install -m 0700 -d ${HOME}/.ssh
+cat > ${HOME}/.ssh/config <<EOF
+Host github.com
+  User git
+  IdentityFile /mnt/secrets/id_rsa.github
+EOF
+
+install -D /mnt/secrets/copr ${HOME}/.config/copr
+
+dnf install -y make git copr-cli
 cd /mnt
-git status
+git config user.name "numixproject"
+git config user.email "ci@numixproject.org"
+git reset --hard ${TRAVIS_TAG}
+git checkout gh-pages
+make
+git add index.html ${srpm}
+git commit -m "add srpm ${TRAVIS_TAG}"
+for tag in $(git tag | grep -v ${TRAVIS_TAG}); do
+  git push origin :${tag}
+done
+git push origin gh-pages
+sleep 20
+copr build numix/numix http://sspreitzer.github.io/numix-specs/${srpm}
