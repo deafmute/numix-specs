@@ -12,10 +12,10 @@ before_install:
   -in secrets.tar.gz.enc -out secrets.tar.gz -d
 - tar xvzf secrets.tar.gz
 script:
-- docker run -v $(pwd):/mnt --rm -t -e TRAVIS_TAG=${TRAVIS_TAG} fedora:rawhide /mnt/scripts/build
+- docker run -v $(pwd):/mnt --rm -t -e TRAVIS_TAG=${TRAVIS_TAG} fedora:latest /mnt/scripts/build
 deploy:
   skip_cleanup: true
   provider: script
-  script: docker run -v $(pwd):/mnt --rm -t -e TRAVIS_TAG=${TRAVIS_TAG} fedora:rawhide /mnt/scripts/deploy
+  script: docker run -v $(pwd):/mnt --rm -t -e TRAVIS_TAG=${TRAVIS_TAG} fedora:latest /mnt/scripts/deploy
   on:
     tags: true
