@@ -1,11 +1,15 @@
-TIME=$(shell date -u +%s)
+TIMESTAMP?=none
 
-srpm:
-	rpmbuild -bs numix.spec
+srpm: numix-999-$(TIMESTAMP).tar.gz
+	rpmbuild -D"timestamp $(TIMESTAMP)" -bs numix.spec
 
-mock:
-	mock -n --rebuild $(shell rpmbuild -bs numix.spec | cut -d: -f2)
+numix-999-$(TIMESTAMP).tar.gz:
+	tar czf numix-999-$(TIMESTAMP).tar.gz numix-*-theme*
+	cp -f numix-999-$(TIMESTAMP).tar.gz $(shell rpm --eval "%_sourcedir")/
+
+mock: srpm
+	mock -n --rebuild $(shell rpm --eval "%_srcrpmdir")/numix-999-$(TIMESTAMP)*.src.rpm
 
 tag:
-	git tag $(TIME)
-	git push origin $(TIME)
+	git tag $(TIMESTAMP)
+	git push origin $(TIMESTAMP)

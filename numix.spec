@@ -1,10 +1,10 @@
-%define timestamp TIMESTAMP
 %define gitclone() (git clone --recursive %1 %{_sourcedir}/%{name}-%{version}-%{release})
 
 Name:		numix
 Version:	999
 Release:	%{timestamp}.git%{?dist}
 Summary:	Numix Project
+Source0:	%{name}-%{version}-%{timestamp}.tar.gz
 
 Group:		Application/Internet
 License:	GPLv3
@@ -53,7 +53,7 @@ BuildRequires: rubygems glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
 Numix is a modern flat theme with a combination of light and dark elements. It supports Gnome, Unity, XFCE and Openbox.
 
 %prep
-%gitclone https://github.com/sspreitzer/numix-specs.git
+%setup -q
 
 %build
 %if %{undefined %fedora}
