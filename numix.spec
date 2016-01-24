@@ -1,5 +1,3 @@
-%define gitclone() (git clone --recursive %1 %{_sourcedir}/%{name}-%{version}-%{release})
-
 Name:		numix
 Version:	999
 Release:	%{timestamp}.git%{?dist}
@@ -10,7 +8,6 @@ Group:		Application/Internet
 License:	GPLv3
 URL:		http://numixproject.org
 
-BuildRequires:	git
 BuildArch:	noarch
 
 %description
@@ -44,33 +41,26 @@ uTouch is an icon theme for Linux from the Numix project
 %package gtk-theme
 Group: Application/Internet
 Summary: Numix Gtk Theme
-%if %{defined %fedora}
-BuildRequires: rubygem-saas glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
-%else
-BuildRequires: rubygems glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
-%endif
+BuildRequires: rubygem-sass glib2 glib2-devel gdk-pixbuf2 gdk-pixbuf2-devel
 %description gtk-theme
 Numix is a modern flat theme with a combination of light and dark elements. It supports Gnome, Unity, XFCE and Openbox.
 
 %prep
-%setup -q
+%setup -q -c %{name}
 
 %build
-%if %{undefined %fedora}
-  gem install --user-install sass
-%endif
-cd %{_sourcedir}/%{name}-%{version}-%{release}/numix-gtk-theme
+cd %{_builddir}/%{name}-%{version}/numix-gtk-theme
 make
 
 %install
 %{__install} -d %{buildroot}%{_datadir}/icons
-%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme/Numix %{buildroot}%{_datadir}/icons/Numix
-%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme/Numix-Light %{buildroot}%{_datadir}/icons/Numix-Light
-%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-circle/Numix-Circle %{buildroot}%{_datadir}/icons/Numix-Circle
-%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-circle/Numix-Circle-Light %{buildroot}%{_datadir}/icons/Numix-Circle-Light
-%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-shine/Numix-Shine %{buildroot}%{_datadir}/icons/Numix-Shine
-%{__cp} -r %{_sourcedir}/%{name}-%{version}-%{release}/numix-icon-theme-utouch/Numix-uTouch %{buildroot}%{_datadir}/icons/Numix-uTouch
-cd %{_sourcedir}/%{name}-%{version}-%{release}/numix-gtk-theme
+%{__cp} -r %{_builddir}/%{name}-%{version}/numix-icon-theme/Numix %{buildroot}%{_datadir}/icons/Numix
+%{__cp} -r %{_builddir}/%{name}-%{version}/numix-icon-theme/Numix-Light %{buildroot}%{_datadir}/icons/Numix-Light
+%{__cp} -r %{_builddir}/%{name}-%{version}/numix-icon-theme-circle/Numix-Circle %{buildroot}%{_datadir}/icons/Numix-Circle
+%{__cp} -r %{_builddir}/%{name}-%{version}/numix-icon-theme-circle/Numix-Circle-Light %{buildroot}%{_datadir}/icons/Numix-Circle-Light
+%{__cp} -r %{_builddir}/%{name}-%{version}/numix-icon-theme-shine/Numix-Shine %{buildroot}%{_datadir}/icons/Numix-Shine
+%{__cp} -r %{_builddir}/%{name}-%{version}/numix-icon-theme-utouch/Numix-uTouch %{buildroot}%{_datadir}/icons/Numix-uTouch
+cd %{_builddir}/%{name}-%{version}/numix-gtk-theme
 make install DESTDIR=%{buildroot}
 
 %files icon-theme
@@ -96,6 +86,8 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/themes/Numix
 
 %changelog
+* Sun Jan 24 2016 Sascha Spreitzer <sspreitz@redhat.com>
+- Refactor to build real srpms
 * Tue Nov 10 2015 Sascha Spreitzer <sspreitz@redhat.com>
 - Repackaging
 - Adding Shine and uTouch

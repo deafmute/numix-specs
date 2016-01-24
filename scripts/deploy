@@ -3,8 +3,12 @@
 set -x
 set -e
 
-dnf install -y make git copr-cli
 cd /mnt
+
+TRAVIS_TAG=$(cat .timestamp)
+TIMESTAMP=$(cat .timestamp)
+
+dnf install -y git copr-cli
 
 srpm=$(ls numix-999-${TRAVIS_TAG}*.src.rpm)
 

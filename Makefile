@@ -8,7 +8,7 @@ numix-999-$(TIMESTAMP).tar.gz:
 	cp -f numix-999-$(TIMESTAMP).tar.gz $(shell rpm --eval "%_sourcedir")/
 
 mock: srpm
-	mock -n --rebuild $(shell rpm --eval "%_srcrpmdir")/numix-999-$(TIMESTAMP)*.src.rpm
+	mock -n -D"timestamp $(TIMESTAMP)" --rebuild $(shell rpm --eval "%_srcrpmdir")/numix-999-$(TIMESTAMP)*.src.rpm
 
 tag:
 	git tag $(TIMESTAMP)
