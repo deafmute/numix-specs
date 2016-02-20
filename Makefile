@@ -2,6 +2,7 @@ TIMESTAMP?=none
 
 srpm: numix-999-$(TIMESTAMP).tar.gz prep
 	rpmbuild -D"timestamp $(TIMESTAMP)" -bs numix.spec
+	cp $(shell rpm --eval "%_srcrpmdir")/numix-999-$(TIMESTAMP)*.src.rpm .
 
 prep:
 	mkdir -p $(shell rpm --eval '%_topdir')/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
