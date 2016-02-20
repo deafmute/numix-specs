@@ -1,15 +1,24 @@
 TIMESTAMP?=none
 
-srpm: numix-999-$(TIMESTAMP).tar.gz
+srpm: numix-999-$(TIMESTAMP).tar.gz prep
 	rpmbuild -D"timestamp $(TIMESTAMP)" -bs numix.spec
 
-numix-999-$(TIMESTAMP).tar.gz:
+prep:
+	mkdir -p $(shell rpm --eval '%_topdir')/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+
+numix-999-$(TIMESTAMP).tar.gz: check
 	tar czf numix-999-$(TIMESTAMP).tar.gz numix-*-theme*
 	cp -f numix-999-$(TIMESTAMP).tar.gz $(shell rpm --eval "%_sourcedir")/
 
 mock: srpm
 	mock -n -D"timestamp $(TIMESTAMP)" --rebuild $(shell rpm --eval "%_srcrpmdir")/numix-999-$(TIMESTAMP)*.src.rpm
 
-tag:
+tag: check
 	git tag $(TIMESTAMP)
 	git push origin $(TIMESTAMP)
+
+check:
+	if [ "$(TIMESTAMP)" == "none" ]; then \
+		echo "ERROR: TIMESTAMP not set"; \
+		exit 1; \
+	fi
