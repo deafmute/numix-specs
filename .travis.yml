@@ -11,8 +11,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_986e194655d1_key -iv $encrypted_986e194655d1_iv
   -in secrets.tar.gz.enc -out secrets.tar.gz -d
 - tar xvzf secrets.tar.gz
-script:
-- docker run -v $(pwd):/mnt --rm -t -e TRAVIS_TAG=${TRAVIS_TAG} fedora:latest /mnt/scripts/build
+script: docker run -v $(pwd):/mnt --rm -t -e TRAVIS_TAG=${TRAVIS_TAG} fedora:latest "dnf install rpm-build make; make -C /mnt"
 deploy:
   skip_cleanup: true
   provider: script

@@ -6,7 +6,7 @@ srpm: numix-999-$(TIMESTAMP).tar.gz prep
 prep:
 	mkdir -p $(shell rpm --eval '%_topdir')/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 
-numix-999-$(TIMESTAMP).tar.gz: check
+numix-999-$(TIMESTAMP).tar.gz: check prep
 	tar czf numix-999-$(TIMESTAMP).tar.gz numix-*-theme*
 	cp -f numix-999-$(TIMESTAMP).tar.gz $(shell rpm --eval "%_sourcedir")/
 
