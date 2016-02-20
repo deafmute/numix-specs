@@ -31,7 +31,6 @@ git remote add origin git@github.com:sspreitzer/numix-specs.git
 git reset --hard ${TRAVIS_TAG}
 git fetch
 git checkout gh-pages
-make
 git add index.html ${srpm}
 git commit -m "add srpm ${TRAVIS_TAG}"
 for tag in $(git tag | grep -v ${TRAVIS_TAG}); do
