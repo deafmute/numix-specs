@@ -24,11 +24,15 @@ That is why there is at the moment git based rpm versions.
 ## Get it
 
 ### On Fedora
-> $ sudo dnf install numix-\*
+```bash
+sudo dnf install numix-\*
+```
 
 ### On CentOS and Red Hat Enterprise Linux
-> $ yum install epel-release
-> $ yum install numix-\*
+```bash
+yum install epel-release
+yum install numix-\*
+```
 
 ## License
 GPLv3
