@@ -1,15 +1,9 @@
-[submodule "numix-icon-theme"]
-	path = numix-icon-theme
-	url = https://github.com/numixproject/numix-icon-theme.git
-[submodule "numix-icon-theme-circle"]
-	path = numix-icon-theme-circle
-	url = https://github.com/numixproject/numix-icon-theme-circle
-[submodule "numix-icon-theme-shine"]
-	path = numix-icon-theme-shine
-	url = https://github.com/numixproject/numix-icon-theme-shine.git
-[submodule "numix-icon-theme-utouch"]
-	path = numix-icon-theme-utouch
-	url = https://github.com/numixproject/numix-icon-theme-utouch.git
 [submodule "numix-gtk-theme"]
 	path = numix-gtk-theme
-	url = https://github.com/shimmerproject/Numix.git
+	url = http://pkgs.fedoraproject.org/cgit/rpms/numix-gtk-theme.git
+[submodule "numix-icon-theme"]
+	path = numix-icon-theme
+	url = http://pkgs.fedoraproject.org/cgit/rpms/numix-icon-theme.git
+[submodule "numix-icon-theme-circle"]
+	path = numix-icon-theme-circle
+	url = http://pkgs.fedoraproject.org/cgit/rpms/numix-icon-theme-circle.git

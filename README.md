@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/sspreitzer/numix-specs.svg?branch=master)](https://travis-ci.org/sspreitzer/numix-specs)
-
 # Numix Icons & Gtk Theme
 
 ## Intro
@@ -8,22 +6,29 @@ Numix Icons & Gtk Theme for Fedora, CentOS and Red Hat Enterprise Linux.
 
 ## Links
 * [Numix Project](http://numixproject.org)
-* [Numix Fedora Copr](https://copr.fedoraproject.org/coprs/numix/numix)
+
+## Being official
+
+The gtk, Numix icons and Numix Circle icons theme have made it
+into the official repositories of Fedora Linux, CentOS and EPEL.
+
+Thanks goes to:
+* [Satyajit Sahoo](https://github.com/satya164) Original idea
+* [Sascha Spreitzer](https://github.com/sspreitzer) Fedora Package Maintainer
+* [Simone Caronni](https://fedoraproject.org/wiki/User:Slaanesh) Fedora Packager Sponsor and Mentor
 
 ## Remarks
-The upstream source repositories do not have any versioning tags enabled.
-That is why there is at the moment only a git based rpm version.
+The icon repositories do not have versioning tags enabled.
+That is why there is at the moment git based rpm versions.
 
-This git based version is considered a bad example on how to package for RPM
-based systems. Please do not use this example as a reference.
-
-Keep on hacking.
-
-## Enabling it
+## Get it
 
 ### On Fedora
-	$ sudo dnf copr enable -y numix/numix
-	$ sudo dnf install -y numix-\*
+> $ sudo dnf install numix-\*
+
+### On CentOS and Red Hat Enterprise Linux
+> $ yum install epel-release
+> $ yum install numix-\*
 
 ## License
 GPLv3
